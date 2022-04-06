@@ -75,16 +75,17 @@ def jsonFormater(input):
     regexMatch = r'(\d+-\d+-\d+ \d+:\d+:\d+\.\d+).+ ([0-9]+).+Tx.+1{6} (\d+-\d+-\d+ \d+:\d+:\d+\.\d+).+ ([0-9]+).+Rx.+9{6}'
     
     ## This section does json formatting as well as injecting all data analyzed by dataAnalysis()
-    analysisDictionary = """{"DOS_THRESHOLD" : %s, "logs":[""" % (DOS_THRESHOLD)
+    analysisString = """{"DOS_THRESHOLD" : %s, "logs":[""" % (DOS_THRESHOLD)
 
     for tupleLine in re.findall(regexMatch, input):
         data = dataAnalysis(tupleLine[0], tupleLine[2]) # send data to be analyzed (more data can be sent as needed)
-        analysisDictionary +="""{"stream": "%s", "details":[{"start time": "%s" ,"end time" : "%s" ,"dos time" : "%ss", "dos attack" : "%s"}]},""" % (tupleLine[1], tupleLine[0], tupleLine[2], f"{data[0]:.2f}", data[1])
+        analysisString +="""{"stream": "%s", "details":[{"start time": "%s" ,"end time" : "%s" ,"dos time" : "%ss", "dos attack" : "%s"}]},""" % (tupleLine[1], tupleLine[0], tupleLine[2], f"{data[0]:.2f}", data[1])
     
-    analysisDictionary += "]}"
-    analysisDictionary = ''.join(analysisDictionary.rsplit(",",1)) # removes the last comma, porbs a better way.
+    analysisString += "]}"
+    analysisString = ''.join(analysisString.rsplit(",",1)) # removes the last comma, porbs a better way.
     
-    return analysisDictionary
+    return analysisString
+
 
 ## This function handles all data gathering/analysis, if any optimization is required its here ;)
 def dataAnalysis(*arguments):
