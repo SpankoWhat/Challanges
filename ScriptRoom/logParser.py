@@ -1,9 +1,3 @@
-## SOURCES:
-# https://pynative.com/python-regex-capturing-groups/
-# https://regex101.com/
-# https://www3.ntu.edu.sg/home/ehchua/programming/howto/Regexe.html
-# https://code.visualstudio.com/docs/languages/json
-
 from datetime import datetime
 from genericpath import exists
 import re
@@ -72,7 +66,7 @@ def parseLog(input):
 
 def jsonFormater(input):
     global DOS_THRESHOLD
-    regexMatch = r'(\d+-\d+-\d+ \d+:\d+:\d+\.\d+).+ ([0-9]+).+Tx.+1{6} (\d+-\d+-\d+ \d+:\d+:\d+\.\d+).+ ([0-9]+).+Rx.+9{6}'
+    regexMatch = r'(\d+-\d+-\d+ \d+:\d+:\d+\.\d+).+ ([0-9]+).+Tx.+1{6} (\d+-\d+-\d+ \d+:\d+:\d+\.\d+).+ [0-9]+.+Rx.+9{6}' #Removed fourth register
     
     ## This section does json formatting as well as injecting all data analyzed by dataAnalysis()
     analysisString = """{"DOS_THRESHOLD" : %s, "logs":[""" % (DOS_THRESHOLD)
@@ -85,7 +79,6 @@ def jsonFormater(input):
     analysisString = ''.join(analysisString.rsplit(",",1)) # removes the last comma, porbs a better way.
     
     return analysisString
-
 
 ## This function handles all data gathering/analysis, if any optimization is required its here ;)
 def dataAnalysis(*arguments):
