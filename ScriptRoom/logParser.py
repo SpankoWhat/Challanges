@@ -7,7 +7,7 @@ import json
 DEBUG = False
 DOS_THRESHOLD = 100             #time in milliseconds
 RAWFILENAME = "cleanLog"        #name of the cleaned log file
-ANALYZEDFILE = "analysedlog"   #name of the analyzed json file
+ANALYZEDFILE = "analysedlog"    #name of the analyzed json file
 INPUTFILE = "inputFile.log"     #default input file
 RESULTNAME = "results"          #name of results report
 
@@ -76,7 +76,7 @@ def jsonFormater(input):
         analysisString +="""{"stream": "%s", "details":[{"start time": "%s" ,"end time" : "%s" ,"dos time" : "%ss", "dos attack" : "%s"}]},""" % (tupleLine[1], tupleLine[0], tupleLine[2], f"{data[0]:.2f}", data[1])
     
     analysisString += "]}"
-    analysisString = ''.join(analysisString.rsplit(",",1)) # removes the last comma, porbs a better way.
+    analysisString = ''.join(analysisString.rsplit(",",1)) # removes the last comma, there is porbs a better way.
     
     return analysisString
 
@@ -84,6 +84,8 @@ def jsonFormater(input):
 def dataAnalysis(*arguments):
     global DOS_THRESHOLD
     dos = False
+
+    # Time is translated into a proper time format then is translated to epoch time for finer calculations
     timeOne = datetime.strptime(arguments[0], "%Y-%m-%d %H:%M:%S.%f").timestamp()
     timeTwo = datetime.strptime(arguments[1], "%Y-%m-%d %H:%M:%S.%f").timestamp()
 
@@ -99,6 +101,7 @@ def analyseDOS():
     jsonObject = json.load(jsonFileInput)
     jsonFileInput.close()
 
+    #Parses the json object
     alertList = "DOS_THRESHOLD: %sms\n" % (jsonObject["DOS_THRESHOLD"])
     for log in jsonObject["logs"]:
         if (log["details"][0]["dos attack"]) == "True":
@@ -149,7 +152,6 @@ def handleUserInput():
             fileExists = not fileExists
         else:
             print("Invalid file, try again ->")
-            
 
 #Start program
 main()
