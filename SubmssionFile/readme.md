@@ -1,4 +1,5 @@
 # The script requires Python 3.9.1
+# To run: python logParser.py
 With the modules:
 - datetime 
 - genericpath
