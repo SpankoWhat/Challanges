@@ -11,6 +11,7 @@ ANALYZEDFILE = "analysedlog"    #name of the analyzed json file
 INPUTFILE = "inputFile.log"     #default input file
 RESULTNAME = "results"          #name of results report
 
+
 def main():
     global DEBUG
     global RAWFILENAME
