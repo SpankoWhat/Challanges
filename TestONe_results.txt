@@ -1,0 +1,11 @@
+DOS_THRESHOLD: 100
+DOS alert triggered -> Stream 5: 20.18s
+DOS alert triggered -> Stream 19: 3.24s
+DOS alert triggered -> Stream 29: 3.65s
+DOS alert triggered -> Stream 204: 4.71s
+DOS alert triggered -> Stream 415: 20.17s
+DOS alert triggered -> Stream 465: 3.25s
+DOS alert triggered -> Stream 784: 3.14s
+DOS alert triggered -> Stream 1283: 3.25s
+DOS alert triggered -> Stream 1395: 6.08s
+DOS alert triggered -> Stream 1414: 3.86s
