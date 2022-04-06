@@ -105,7 +105,7 @@ def analyseDOS():
     jsonObject = json.load(jsonFileInput)
     jsonFileInput.close()
 
-    alertList = "DOS_THRESHOLD: %s\n" % (jsonObject["DOS_THRESHOLD"])
+    alertList = "DOS_THRESHOLD: %sms\n" % (jsonObject["DOS_THRESHOLD"])
     for log in jsonObject["logs"]:
         if (log["details"][0]["dos attack"]) == "True":
             alertList += "DOS alert triggered -> Stream %s: %s\n" % (log["stream"], log["details"][0]["dos time"])
