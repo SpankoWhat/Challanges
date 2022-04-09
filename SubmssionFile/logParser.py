@@ -147,7 +147,7 @@ def handleUserInput():
     #USE TRY AND ACCEPT LOL LMAO
 
     while(not fileExists):
-        inputFileName = input("Enter path of the log file (default=./inputFile.log): ")
+        inputFileName = input("Enter path of the log file (default=.\inputFile.log): ")
         if len(inputFileName) > 0 and exists(inputFileName):
             INPUTFILE = inputFileName
             fileExists = not fileExists
