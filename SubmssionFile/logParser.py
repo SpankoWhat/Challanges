@@ -19,10 +19,16 @@ def main():
     global INPUTFILE
     global RESULTNAME
 
+    # Gathers logfil path and naming conventions
     handleUserInput()
 
-    # check if file exists
-    inputFile = open(INPUTFILE, "r")
+    # Checks if file is ok
+    try:
+        inputFile = open(INPUTFILE, "r")
+    except OSError as err:
+        print("Error: %s" % (err))
+        return
+
     
     # Handles the bulk of cleaning and aqquiring the required data. This should be modified if 
     # more data is required
@@ -117,9 +123,13 @@ def ouput(input, name, format):
     if os.path.exists(fullpath):
         os.remove(fullpath)
 
-    outputFile = open(fullpath, "x")
-    outputFile.write(str(input))
-    outputFile.close()
+    try:
+        outputFile = open(fullpath, "x")
+        outputFile.write(str(input))
+        outputFile.close()
+    except OSError as err:
+        print("Error: %s" % (err))
+
 
 def formatHelper(input):
     textOuput = ''
