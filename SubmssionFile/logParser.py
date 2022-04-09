@@ -112,7 +112,7 @@ def analyseDOS():
 
 def ouput(input, name, format):
     fileName = name +"."+ format
-    fullpath = os.getcwd() + "\\" + fileName
+    fullpath = os.getcwd() + "/" + fileName  #Changed For linux
 
     if os.path.exists(fullpath):
         os.remove(fullpath)
@@ -151,7 +151,8 @@ def handleUserInput():
         if len(inputFileName) > 0 and exists(inputFileName):
             INPUTFILE = inputFileName
             fileExists = not fileExists
-        elif not len(inputFileName) > 0:
+        elif not len(inputFileName) > 0 and (exists(inputFileName)):
+            INPUTFILE = inputFileName 
             fileExists = not fileExists
         else:
             print("Invalid file, try again ->")
