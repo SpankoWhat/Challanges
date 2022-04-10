@@ -4,7 +4,7 @@
 Test case 0 verdict: Passed
 
 2021-02-09 13:10:55.909		CAN-FD	1	Tx	F3794DC   	10	17 5F E5 45 6F 98 5D AD 0D 42 A0 D7 00 5C D5 F7 	CAN_FD_raw_frame_invalid_frame | ID1_dlc_=_data | _14DA45F1
-2021-02-09 13:10:56.012		CAN-FD	0	Tx	11111111  	8	02 10 03 00 00 00 00 00                 	Instrumentation | Instrumentation after | Instrumentation request_14DA45F1
+2021-02-09 13:10:56.012		CAN-FD	1	Tx	11111111  	8	02 10 03 00 00 00 00 00                 	Instrumentation | Instrumentation after | Instrumentation request_14DA45F1
 2021-02-09 13:10:56.018		CAN-FD	1	Rx	99999999  	8	06 50 03 00 64 01 F4 55                 	Instrumentation | Response | Instrumentation response_14DA45F1
 
 Test case 1 verdict: Passed
